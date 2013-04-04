@@ -26,9 +26,7 @@ module RailsSqlViews
     def dump_with_views(stream)
       dump_without_views(stream)
       begin
-        if @connection.supports_views?
-          views(stream)
-        end
+        views(stream)
       rescue => e
         if ActiveRecord::Base.logger
           ActiveRecord::Base.logger.error "Unable to dump views: #{e}"
